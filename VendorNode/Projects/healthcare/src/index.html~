@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Healthcare App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
+    <style type="text/css">
+  		body{
+		  font-family: 'Roboto', sans-serif;
+  		  background-image: linear-gradient(to right, #FF512F, #DD2476) !important;
+		}
+		.contact-wrap{
+  			padding: 30px;
+		}
+		.contact-form{
+    		margin-top: 100px;
+    	}
+      .contact-form .input-block{
+        background-color: rgba(255,255,255, .8);
+        border: solid 1px #FF512F;
+        width: 100%;
+        height: 60px;
+        padding: 25px;
+        position: relative;
+        margin-bottom: 20px;
+        transition: all 0.3s ease-out;
+      }
+      .contact-form .input-block .focus{
+            background-color: #fff;
+            border: solid 1px #E63816;
+      }
+      .contact-form .textarea{
+            height: auto;
+      }
+      .contact-form .textarea .form-control{
+            height: auto;
+            resize: none;
+      }
+      .contact-form .input-block label{
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            display: block;
+            margin: 0;
+            font-weight: 300;
+            z-index: 1;
+            color: #333;
+            font-size: 18px;
+            line-height: 10px;
+      }
+      .contact-form .input-block .form-control{
+            background-color: transparent;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            height: auto;
+            position: relative;
+            z-index: 2;
+            font-size: 18px;
+            color: #333;
+        }
+      .contact-form .input-block .form-control:focus label{
+            top: 0;
+      }
+      .contact-form .square-button{
+            background-color: rgba(255,255,255, .8);
+            color: #E63816;
+            font-size: 26px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            padding: 0 60px;
+            height: 60px;
+            width: 100%;
+      }
+      .contact-form .square-button:hover , .contact-form .square-button:focus{
+            background-color: white;
+      }
+		@media (min-width: 768px) { 
+  			.contact-wrap{
+    			width: 60%;
+    			margin: auto;
+  			}
+		}
+  </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.iith.ac.in" target="_blank" style="margin-top: 30px;font-size: 14px;">Medical Register | IIT Hyderabad</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+          <small><a class="nav-link" href="#" style="font-size: 14px;"><span id="account"></span></a></small>
+        </li>
+      </ul>
+    </nav>
+    <section class="contact-wrap">
+      <form action="" class="contact-form" onSubmit="checkId()">
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">First Name</label>
+            <input id="fname" type="text" class="form-control" required>
+          </div>
+        </div>
+      
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">Last Name</label>
+            <input id="lname" type="text" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">Date of Birth</label>
+            <input id="dob" type="date" class="form-control" required>
+          </div>
+        </div>
+        
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">Doctor Assigned</label>
+            <input id="doctor" type="text" class="form-control" required>
+          </div>
+        </div>
+    
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">Current Date</label>
+            <input id="currDate" type="text" class="form-control" disabled>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="input-block">
+            <label for="">Aadhar Number</label>
+            <input id="id" type="text" class="form-control" required minlength="12" maxlength="12">
+          </div>
+        </div>
+                
+        <div class="col-sm-12">
+          <div class="input-block textarea">
+            <label for="">Problem</label>
+            <textarea id="problem" rows="3" type="text" class="form-control" required></textarea>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <input type="submit" class="square-button" value="Submit">
+        </div>
+      </form>
+    </section>
+    
+    <section class="contact-wrap">
+      <form action="" class="contact-form" onSubmit="App.checkPatient()">
+        <div class="col-sm-12">
+          <div class="input-block">
+            <label for="">Enter ID</label>
+            <input id="sid" type="text" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <input type="submit" class="square-button" value="Submit">
+        </div>
+    </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script type="text/javascript" >
+    //material contact form animation
+		$('.contact-form').find('.form-control').each(function() {
+  		var targetItem = $(this).parent();
+  			if ($(this).val()) {
+    			$(targetItem).find('label').css({
+      			'top': '10px',
+      			'fontSize': '14px'
+    			});
+  			}
+		})
+		$('.contact-form').find('.form-control').focus(function() {
+  			$(this).parent('.input-block').addClass('focus');
+  			$(this).parent().find('label').animate({
+    			'top': '10px',
+    			'fontSize': '14px'
+  			}, 300);
+		})
+		$('.contact-form').find('.form-control').blur(function() {
+  			if ($(this).val().length == 0) {
+    			$(this).parent('.input-block').removeClass('focus');
+    			$(this).parent().find('label').animate({
+      			'top': '25px',
+      			'fontSize': '18px'
+    			}, 300);
+  			}
+		})
+		$('.contact-form').find('input[type="date"]').parent('.input-block').find('label').css({
+			'top': '10px',
+   		'fontSize': '14px'
+		})
+		var _date = new Date();
+		$("#currDate").parent('.input-block').find('label').css({
+			'top': '10px',
+   		'fontSize': '14px'
+		})
+		$("#currDate").val(_date.getDate()+'/'+(_date.getMonth()+1)+'/'+_date.getFullYear());
+		function checkId() {
+		
+			if(/^\d+$/.test(document.getElementById('id').value) == true){
+				App.register();
+			}
+			else {
+				alert("Wrong Id");
+			}
+		}
+    </script>
+    <script src="./app.js"></script>
+  </body>
